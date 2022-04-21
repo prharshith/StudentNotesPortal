@@ -119,7 +119,7 @@
                   <a href="https://studentnotesportaldm.pages.dev/">Dark Mode [BETA]</a>
                   <a href="https://drive.google.com/file/d/1FHsiJ9WmTascH6hNAR-cI7zF_DRMPzw0/view?usp=sharing" target="_blank">IT_R19_UP1 Course Pack</a>   
                 <a href="timetable.html" target="_blank">Time Table [IT]</a>
-                <a href="https://drive.google.com/drive/folders/1WSbergzhsVSCsHSbk1aLDYaEAlZrUrLS?usp=sharing" target="_blank"> Lab Exam's </a>
+                <a href="https://drive.google.com/drive/folders/1WSbergzhsVSCsHSbk1aLDYaEAlZrUrLS?usp=sharing" target="_blank"> Lab Exam's  <br><img src="images/new.gif"> </a>
                 </div>
               </div>
 
@@ -273,33 +273,6 @@
         <div class="col-md-6 col-lg-3 info-col">
           <div class="info_contact">
             <h4>
-              
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                 
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 info-col">
-          <div class="info_contact">
-            <h4>
               Newsletter
             </h4>
             <form action="#">
@@ -310,6 +283,52 @@
             </form>
           </div>
         </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h4>
+          Current Time:
+          <div id="clock">8:10:45</div>
+        </h4>
+        <style>
+        #clock {
+            font-size: 30px;
+            width: 178px;
+            height: 55px;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 20px;
+        }
+    </style>
+    
+    <script>
+        setInterval(showTime, 1000);
+        function showTime() {
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            am_pm = "AM";
+  
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+  
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+  
+            let currentTime = hour + ":" 
+                + min + ":" + sec + am_pm;
+  
+            document.getElementById("clock")
+                .innerHTML = currentTime;
+        }
+  
+        showTime();
+    </script>  
         <div class="col-md-6 col-lg-3 info-col">
           <div class="map_container">
             <div class="map">
