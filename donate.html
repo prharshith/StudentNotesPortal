@@ -286,49 +286,72 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <h4>
           Current Time:
-          <div id="clock">8:10:45</div>
-        </h4>
-        <style>
-        #clock {
-            font-size: 30px;
-            width: 178px;
-            height: 55px;
-            border: 2px solid rgb(255, 255, 255);
-            border-radius: 20px;
-        }
-    </style>
-    
-    <script>
-        setInterval(showTime, 1000);
-        function showTime() {
-            let time = new Date();
-            let hour = time.getHours();
-            let min = time.getMinutes();
-            let sec = time.getSeconds();
-            am_pm = "AM";
-  
-            if (hour > 12) {
-                hour -= 12;
-                am_pm = "PM";
-            }
-            if (hour == 0) {
-                hr = 12;
-                am_pm = "AM";
-            }
-  
-            hour = hour < 10 ? "0" + hour : hour;
-            min = min < 10 ? "0" + min : min;
-            sec = sec < 10 ? "0" + sec : sec;
-  
-            let currentTime = hour + ":" 
-                + min + ":" + sec + am_pm;
-  
-            document.getElementById("clock")
-                .innerHTML = currentTime;
-        }
-  
-        showTime();
-    </script>  
+          <div class="clock">
+            <span class="clock-time"></span>
+            <span class="clock-ampm"></span>
+          </div>
+
+ <style>
+    .clock {
+  background: #063547;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.clock-time,
+.clock-ampm {
+  font-family: "Mulish", bold;
+  font-size: 30px;
+  color: #eeeeee;
+}
+
+.clock-time {
+  font-size: 48px;
+}
+
+  </style>
+<script>
+  class DigitalClock {
+  constructor(element) {
+    this.element = element;
+  }
+
+  start() {
+    this.update();
+
+    setInterval(() => {
+      this.update();
+    }, 500);
+  }
+
+  update() {
+    const parts = this.getTimeParts();
+    const minuteFormatted = parts.minute.toString().padStart(2, "0");
+    const timeFormatted = `${parts.hour}:${minuteFormatted}`;
+    const amPm = parts.isAm ? "AM" : "PM";
+
+    this.element.querySelector(".clock-time").textContent = timeFormatted;
+    this.element.querySelector(".clock-ampm").textContent = amPm;
+  }
+
+  getTimeParts() {
+    const now = new Date();
+
+    return {
+      hour: now.getHours() % 12 || 12,
+      minute: now.getMinutes(),
+      isAm: now.getHours() < 12
+    };
+  }
+}
+
+const clockElement = document.querySelector(".clock");
+const clockObject = new DigitalClock(clockElement);
+
+clockObject.start();
+</script> 
         <div class="col-md-6 col-lg-3 info-col">
           <div class="map_container">
             <div class="map">
